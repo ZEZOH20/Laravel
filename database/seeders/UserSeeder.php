@@ -25,7 +25,8 @@ class UserSeeder extends Seeder
                         'name'=>$obj[0],
                         'email'=>$obj[1],
                         'password'=>Hash::make($obj[2]),
-                        'role_id'=>$obj[3]
+                        'role_id'=>$obj[3],
+                        'email_verified_at'=>null,
                     ]);
             }
         }

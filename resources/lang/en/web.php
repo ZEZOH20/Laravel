@@ -7,6 +7,7 @@
     'name'=>' name',
     'HOME'=>'HOME',
     'CONTACT'=>'CONTACT',
+    'profile'=>'PROFILE',
     'SIGN IN'=>'SIGN IN ',
     'SIGN UP'=>'SIGN UP',
 
@@ -19,4 +20,6 @@
     'Email'=>'Email',
     'Subject'=>'Subject',
     'Enter Your Message'=>'Enter Your Message',
+
+    'dashboard'=>'DASHBOARD',
  ];

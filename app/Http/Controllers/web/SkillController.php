@@ -8,7 +8,7 @@ class SkillController extends Controller
 {
     function show($id){
         $data['skill']=Skill::findOrFail($id);
-        $data['exams']=$data['skill']->exams()->paginate(3);
+        $data['exams']=$data['skill']->exams()->active()->paginate(3);
         return view('web.home.skill',$data);
     }
 }

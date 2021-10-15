@@ -18,7 +18,7 @@ class Exam extends Model
     }
 
     function users(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('time_min','status','score')->withTimestamps();
     }
 
     function name(){
@@ -36,5 +36,8 @@ class Exam extends Model
     function date(){
         $d=Carbon::parse($this->created_at)->format('d M, Y');
         return $d;
+    }
+    function scopeActive($query){
+        return $query->where('active',1);
     }
 }

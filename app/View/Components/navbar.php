@@ -23,7 +23,7 @@ class navbar extends Component
      */
     public function render()
     {
-        $data['cats']=cat::select('id','name')->get();
+        $data['cats']=cat::select('id','name')->active()->get();
         return view('components.navbar',$data);
     }
 }

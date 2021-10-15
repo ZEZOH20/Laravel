@@ -11,4 +11,7 @@ class Question extends Model
     function exam(){
         return $this->belongsTo(Exam::class);
     }
+    function scopeActive($query){
+        return $query->where('active',1);
+    }
 }

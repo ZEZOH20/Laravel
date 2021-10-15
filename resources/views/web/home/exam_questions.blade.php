@@ -1,5 +1,9 @@
 @extends('web.home.layout')
 
+@section('css')
+ <link href="{{asset("web/css/TimeCircles.css")}}" rel="stylesheet"/>
+@endsection
+
 @section('title')
 Exam_Questions
 @endsection
@@ -55,25 +59,25 @@ Exam_Questions
                                     <div class="panel-body">
                                         <div class="radio">
                                             <label>
-                                              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                                              <input type="radio" name="ans[{{$question->id}}]" id="optionsRadios1" value="1" form="exam-submit-form">
                                               {{$question->option_1}}
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                              <input type="radio" name="ans[{{$question->id}}]" id="optionsRadios2" value="2" form="exam-submit-form">
                                               {{$question->option_2}}
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                              <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                                              <input type="radio" name="ans[{{$question->id}}]" id="optionsRadios3" value="3" form="exam-submit-form">
                                               {{$question->option_3}}
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
-                                              <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                                              <input type="radio" name="ans[{{$question->id}}]" id="optionsRadios3" value="4" form="exam-submit-form">
                                               {{$question->option_4}}
                                             </label>
                                         </div>
@@ -85,7 +89,10 @@ Exam_Questions
 						<!-- /blog post -->
 
                         <div>
-                            <button class="main-button icon-button pull-left">Submit</button>
+                            <form id="exam-submit-form" action="{{url("/exam/submit/$exam->id")}}" method="POST">
+                                @csrf
+                                <button type="submit" class="main-button icon-button pull-left">Submit</button>
+                            </form>
                             <button class="main-button icon-button btn-danger pull-left ml-sm">Cancel</button>
                         </div>
 					</div>
@@ -108,7 +115,7 @@ Exam_Questions
                                         echo "<i class='fa fa-star-o'></i>";
                                     }
                                     @endphp
-
+                               <div class="example" data-timer="{{$exam->duration_min}}"></div>
                             </ul>
                             <!-- /exam details widget -->
 
@@ -126,5 +133,24 @@ Exam_Questions
 
 		</div>
 		<!-- /Blog -->
+
+@endsection
+
+@section('script')
+ <script src="{{asset("web/js/TimeCircles.js")}}"> </script>
+ <script>
+   $(".example").TimeCircles();
+   $(".example").TimeCircles({ time:{
+        Days:{ show: false },
+    },
+       count_past_zero: false
+    });
+    $(".example").TimeCircles().addListener(function(unit, value, total) {
+    if(total <= 0) $('#exam-submit-form').submit();
+   });
+    /*Days show
+      password reset
+       */
+ </script>
 @endsection
 

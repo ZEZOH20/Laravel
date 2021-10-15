@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+         @yield('css');
 		<title>@yield('title')</title>
 
 		<!-- Google font -->
@@ -73,5 +73,15 @@
 		<script type="text/javascript" src="{{asset('web/js/bootstrap.min.js')}}"></script>
 		<script type="text/javascript" src="{{asset('web/js/main.js')}}"></script>
 
+        <!-- logOut-->
+        <script>
+            //$('#logout_button')
+         document.getElementById('logout_button').addEventListener("click",function(e){
+          e.preventDefault()
+          document.getElementById('logout_form').submit()
+        })
+        </script>
+        <!-- logOut-->
+           @yield('script');
 	</body>
 </html>

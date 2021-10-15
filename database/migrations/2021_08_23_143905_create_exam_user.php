@@ -17,9 +17,9 @@ class CreateExamUser extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade');
             $table->foreignId('exam_id')->constrained()->onUpdate('cascade');
-            $table->smallInteger('time_min');
-            $table->enum('status',['opend','closed']);
-            $table->float('score',5,2);
+            $table->smallInteger('time_min')->nullable();
+            $table->enum('status',['opend','closed'])->default('closed');
+            $table->float('score',5,2)->nullable();
             $table->timestamps();
         });
     }

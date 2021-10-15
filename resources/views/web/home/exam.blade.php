@@ -50,11 +50,14 @@ exams
                                {{$exam->desc()}}
                             </p>
 						</div>
+                        @include('web.home.inc.messages');
 						<!-- /blog post -->
-
-                        <div>
-                            <a href="{{url("/exam/questions/$exam->id")}}"><button class="main-button icon-button pull-left">Start Exam</button></a>
-                        </div>
+                     @if($canViewStartBtn!=false)
+                        <form method='POST' action="{{url("/exam/start/$exam->id")}}" >
+                            @csrf
+                            <button type='submit'class="main-button icon-button pull-left">Start Exam</button>
+                        </form>
+                      @endif
 					</div>
 					<!-- /main blog -->
 

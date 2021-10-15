@@ -15,6 +15,7 @@ class AddRoleIdToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('role_id')->constrained()->onUpdate('cascade');
+            $table->string('email_verified_at')->nullable();
         });
     }
 
