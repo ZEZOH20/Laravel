@@ -1,0 +1,21 @@
+install composer
+
+install XAMP
+
+composer create-project laravel/first_project
+
+start Apache & MYSQL
+
+php artisan migrate
+
+
+php artisan db:seed --class=RoleSeeder
+
+php artisan db:seed --class=UserSeeder
+
+php artisan db:seed --class=CatSeeder
+
+php artisan db:seed --class=DatabaseSeeder
+
+php artisan db:seed --class=SettingSeeder
+
